@@ -99,7 +99,7 @@
       <p class="section-p" style="margin:0 auto;text-align:center">Every claim we make is backed by an official certificate. These are our authorized dealership credentials — issued directly by the brands we represent.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:960px;margin:0 auto" data-aos="fade-up" data-aos-delay="80">
+    <div class="cert-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:960px;margin:0 auto" data-aos="fade-up" data-aos-delay="80">
 
       <!-- TATA STRUCTURA CERT -->
       <div style="border:1px solid rgba(201,168,76,.22);background:var(--ch2);overflow:hidden;">
@@ -137,8 +137,12 @@
 
     <!-- responsive fix for mobile -->
     <style>
-      @media(max-width:680px){
-        .cert-grid { grid-template-columns:1fr !important; }
+      @media(max-width:768px){
+        .cert-grid {
+          grid-template-columns: 1fr !important;
+          gap: 1.5rem !important;
+          max-width: 100% !important;
+        }
       }
     </style>
 
