@@ -138,10 +138,24 @@
     <!-- responsive fix for mobile -->
     <style>
       @media(max-width:768px){
+        /* Certifications: full width single column */
         .cert-grid {
           grid-template-columns: 1fr !important;
           gap: 1.5rem !important;
           max-width: 100% !important;
+        }
+        /* Values / What Drives Us: single column, full width */
+        .values-grid {
+          grid-template-columns: 1fr !important;
+          background: none !important;
+          gap: 1rem !important;
+        }
+        .values-grid .service-card {
+          padding: 1.75rem 1.5rem !important;
+        }
+        /* Fix page-hero hidden under navbar on mobile */
+        .page-hero {
+          padding-top: 100px !important;
         }
       }
     </style>
@@ -156,7 +170,7 @@
       <div class="eyebrow" style="justify-content:center">Our Values</div>
       <h2 class="section-h" style="text-align:center">What <em>Drives Us</em></h2>
     </div>
-    <div class="services-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="services-grid values-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="service-card" data-aos="fade-up">
         <span class="service-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--gold)"><path d="M14 3L4 8V15C4 20.25 8.4 25.17 14 26.5C19.6 25.17 24 20.25 24 15V8L14 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/><path d="M9.5 14L12.5 17L18.5 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3>Quality First</h3>
