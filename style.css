@@ -789,3 +789,228 @@ footer{background:var(--black)}
     padding: 0 1.25rem;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════
+   MOBILE HORIZONTAL SCROLL FIX
+   Paste this at the very END of style.css
+   Fixes all overflow / horizontal scroll issues
+   on mobile. Desktop layout untouched.
+═══════════════════════════════════════════ */
+
+/* ── Root containment: stop any element from
+      escaping the viewport width ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ── The giant ghost text behind page heroes
+      ("About", "Contact", etc.) overflows on mobile.
+      Clip it at the section boundary. ── */
+.page-hero {
+  overflow: hidden;
+}
+
+.page-hero-ghost {
+  /* On small screens the 18rem ghost text pushes
+     right edge far outside viewport */
+  font-size: clamp(5rem, 28vw, 18rem);
+  right: 0;          /* was -.05em — prevents rightward bleed */
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* ── Hero background: fixed attachment is broken
+      on iOS Safari and causes layout shifts ── */
+.hero-bg {
+  background-attachment: scroll; /* was: fixed */
+}
+
+/* ── Use-case quick-nav: min-width:max-content
+      forces horizontal scroll on the whole page ── */
+.uc-quicknav-inner {
+  min-width: 0;          /* remove the max-content lock */
+  flex-wrap: nowrap;     /* keep pills on one scrollable line */
+}
+
+/* The quicknav container already has overflow-x:auto
+   so inner can scroll independently — page won't scroll */
+.uc-quicknav {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── CTA band decorative radial — 600px wide circle
+      overflows on narrow screens ── */
+.cta-band {
+  overflow: hidden;   /* contain the 600px pseudo-element */
+}
+
+/* ── About image corner brackets use negative
+      left/right offsets which bleed outside ── */
+.about-img-wrap {
+  overflow: hidden;   /* clip the ::before / ::after brackets */
+}
+
+/* ── Product detail panel has padding:3rem which
+      combined with border can overflow on small phones ── */
+@media (max-width: 480px) {
+  .product-detail-panel {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+/* ── All remaining mobile-specific fixes ── */
+@media (max-width: 768px) {
+
+  /* Section base padding — prevent side bleed */
+  .section {
+    padding: 4rem 1.25rem;
+  }
+
+  /* Use-case sections */
+  .usecase-section {
+    padding: 4rem 1.25rem;
+  }
+
+  /* Use-case two-column grid → single column */
+  .usecase-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* RTL reverse trick for alternating layouts — disable on mobile */
+  .usecase-inner.reverse {
+    direction: ltr;
+  }
+
+  /* Use-case image height — too tall on phones */
+  .usecase-img {
+    height: 240px;
+  }
+
+  /* Timeline: left padding + absolute dot can bleed */
+  .timeline-items {
+    padding-left: 1.5rem;
+  }
+
+  /* Two-column about/contact/service grids */
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* About image: fixed height clips weirdly on mobile */
+  .about-img-wrap img {
+    height: 260px;
+  }
+
+  /* Services / values three-column grids */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  /* Why-choose-us grid */
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Certificates grid (inline style override) */
+  .cert-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  /* Stats row: 2-up wrap */
+  .stats-row {
+    flex-wrap: wrap;
+  }
+
+  .stat-col {
+    flex: 1 1 50%;
+    border-right: none;
+    border-bottom: 1px solid rgba(201,168,76,.1);
+    padding: 1.75rem 1rem;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: .5rem;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* Page hero padding */
+  .page-hero {
+    padding: 8rem 1.25rem 3rem;
+  }
+
+  /* CTA band padding */
+  .cta-band {
+    padding: 4rem 1.25rem;
+  }
+
+  /* Navbar padding */
+  #navbar {
+    padding: 0 1.25rem;
+  }
+
+  /* Contact form */
+  .contact-form-wrap {
+    padding: 2rem 1.25rem;
+  }
+
+  /* TATA strip */
+  .tata-strip {
+    padding: .85rem 1.25rem;
+    font-size: .65rem;
+    letter-spacing: 2px;
+  }
+
+  /* Hero content */
+  .hero-content {
+    padding: 3rem 1.25rem 4rem;
+    width: 100%;
+  }
+
+  /* Buttons in hero — full width on very small screens */
+  .hero-actions {
+    flex-direction: column;
+    gap: .85rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Brand cards row: 2 columns on mobile */
+  .brand-cards-row {
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Very small phones: brand cards go single column */
+  .brand-cards-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stat cols also go full width */
+  .stat-col {
+    flex: 1 1 100%;
+  }
+}
